@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN "pw" TEXT;
+ALTER TABLE "User" ADD COLUMN "resetToken" TEXT;
+ALTER TABLE "User" ADD COLUMN "resetTokenExpiresAt" DATETIME;
+ALTER TABLE "User" ADD COLUMN "salt" TEXT;
