@@ -10,16 +10,18 @@
 import { Set, Router, Route, Private } from '@redwoodjs/router'
 
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
+import MainLayout from './layouts/MainLayout/MainLayout'
 
 const Routes = () => {
   return (
     <Router>
-      <Route path="/login" page={LoginPage} name="login" />
-      <Route path="/signup" page={SignupPage} name="signup" />
-      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
-      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
-      <Private unauthenticated="home">
-        <Set wrap={Route} path="/admin">
+      <Set wrap={MainLayout}>
+        <Route path="/login" page={LoginPage} name="login" />
+        <Route path="/signup" page={SignupPage} name="signup" />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+        <Private unauthenticated="home" roles="mom admin">
+          <Route path="/admin" page={AdminPage} name="admin" />
           <Set wrap={ScaffoldLayout} title="Wishes" titleTo="wishes" buttonLabel="New Wish" buttonTo="newWish">
             <Route path="/wishes/new" page={WishNewWishPage} name="newWish" />
             <Route path="/wishes/{id:Int}/edit" page={WishEditWishPage} name="editWish" />
@@ -32,10 +34,10 @@ const Routes = () => {
             <Route path="/users/{id:Int}" page={UserUserPage} name="user" />
             <Route path="/users" page={UserUsersPage} name="users" />
           </Set>
-        </Set>
-      </Private>
-      <Route path="/" page={HomePage} name="home" />
-      <Route notfound page={NotFoundPage} />
+        </Private>
+        <Route path="/" page={HomePage} name="home" />
+        <Route notfound page={NotFoundPage} />
+      </Set>
     </Router>
   )
 }

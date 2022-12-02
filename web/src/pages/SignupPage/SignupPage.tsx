@@ -14,6 +14,8 @@ import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
+import { usersByCode } from '../../lib/userCodes'
+
 const SignupPage = () => {
   const { isAuthenticated, signUp } = useAuth()
 
@@ -24,12 +26,18 @@ const SignupPage = () => {
   }, [isAuthenticated])
 
   // focus on email box on page load
-  const usernameRef = useRef<HTMLInputElement>(null)
+  const codeRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    usernameRef.current?.focus()
+    codeRef.current?.focus()
   }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
+    let name = usersByCode[data.code]
+    data = {
+      ...data,
+      name,
+    };
+    console.log(data)
     const response = await signUp({ ...data })
 
     if (response.message) {
@@ -58,17 +66,41 @@ const SignupPage = () => {
               <div className="rw-form-wrapper">
                 <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <Label
+                    name="code"
+                    className="rw-label"
+                    errorClassName="rw-label rw-label-error"
+                  >
+                    Signup code
+                  </Label>
+                  <TextField
+                    name="code"
+                    className="rw-input"
+                    errorClassName="rw-input rw-input-error"
+                    ref={codeRef}
+                    validation={{
+                      required: {
+                        value: true,
+                        message: 'Signup code is required',
+                      },
+                      validate: {
+                        isValidSignupCode: val=>{
+                          return !!usersByCode[val] || "Invalid signup code";
+                        }
+                      },
+                    }}
+                  />
+                  <FieldError name="code" className="rw-field-error" />
+                  <Label
                     name="username"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    Username
+                    Email address
                   </Label>
                   <TextField
                     name="username"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
-                    ref={usernameRef}
                     validation={{
                       required: {
                         value: true,
@@ -83,7 +115,7 @@ const SignupPage = () => {
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    Password
+                    Create Password
                   </Label>
                   <PasswordField
                     name="password"

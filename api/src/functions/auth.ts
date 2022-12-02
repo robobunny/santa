@@ -66,7 +66,7 @@ export const handler = async (
     },
 
     // How long a user will remain logged in, in seconds
-    expires: 60 * 60 * 24 * 365 * 10,
+    expires: 60 * 60 * 24 * 30,
   }
 
   const resetPasswordOptions: DbAuthHandlerOptions['resetPassword'] = {
@@ -110,12 +110,17 @@ export const handler = async (
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
     handler: ({ username, hashedPassword, salt, userAttributes }) => {
+      console.log('Creating user for', userAttributes.name)
+      let role: String = 'basic';
+      if (userAttributes.name==="Mom")
+        role = 'admin';
       return db.user.create({
         data: {
           email: username,
           hashedPassword: hashedPassword,
           salt: salt,
-          // name: userAttributes.name
+          name: userAttributes.name,
+          role,
         },
       })
     },
@@ -148,7 +153,7 @@ export const handler = async (
     authFields: {
       id: 'id',
       username: 'email',
-      hashedPassword: 'pw',
+      hashedPassword: 'hashedPassword',
       salt: 'salt',
       resetToken: 'resetToken',
       resetTokenExpiresAt: 'resetTokenExpiresAt',
