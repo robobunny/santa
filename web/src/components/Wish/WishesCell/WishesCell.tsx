@@ -9,11 +9,11 @@ export const QUERY = gql`
   query FindWishes {
     wishes {
       id
-      userId
-      name
-      description
-      price
+      createdAt
+      title
       url
+      description
+      userId
     }
   }
 `

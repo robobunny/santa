@@ -5,20 +5,26 @@ export const standard = defineScenario<Prisma.WishCreateArgs>({
   wish: {
     one: {
       data: {
-        name: 'String',
-        description: 'String',
-        price: 'String',
-        url: 'String',
-        user: { create: { name: 'String', email: 'String' } },
+        user: {
+          create: {
+            name: 'String6363829',
+            email: 'String6834194',
+            hashedPassword: 'String',
+            salt: 'String',
+          },
+        },
       },
     },
     two: {
       data: {
-        name: 'String',
-        description: 'String',
-        price: 'String',
-        url: 'String',
-        user: { create: { name: 'String', email: 'String' } },
+        user: {
+          create: {
+            name: 'String2907652',
+            email: 'String6509250',
+            hashedPassword: 'String',
+            salt: 'String',
+          },
+        },
       },
     },
   },

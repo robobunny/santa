@@ -3,8 +3,8 @@ import {
   FormError,
   FieldError,
   Label,
-  NumberField,
   TextField,
+  NumberField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -38,9 +38,6 @@ const WishForm = (props: WishFormProps) => {
     
     
   
-    
-    
-  
     props.onSave(data, props?.wish?.id)
   }
 
@@ -54,6 +51,60 @@ const WishForm = (props: WishFormProps) => {
           listClassName="rw-form-error-list"
         />
       
+        <Label
+          name="title"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Title
+        </Label>
+        
+          <TextField
+            name="title"
+            defaultValue={props.wish?.title}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+        
+
+        <FieldError name="title" className="rw-field-error" />
+
+        <Label
+          name="url"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Url
+        </Label>
+        
+          <TextField
+            name="url"
+            defaultValue={props.wish?.url}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+        
+
+        <FieldError name="url" className="rw-field-error" />
+
+        <Label
+          name="description"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Description
+        </Label>
+        
+          <TextField
+            name="description"
+            defaultValue={props.wish?.description}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+        
+
+        <FieldError name="description" className="rw-field-error" />
+
         <Label
           name="userId"
           className="rw-label"
@@ -72,82 +123,6 @@ const WishForm = (props: WishFormProps) => {
         
 
         <FieldError name="userId" className="rw-field-error" />
-
-        <Label
-          name="name"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Name
-        </Label>
-        
-          <TextField
-            name="name"
-            defaultValue={props.wish?.name}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
-
-        <FieldError name="name" className="rw-field-error" />
-
-        <Label
-          name="description"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Description
-        </Label>
-        
-          <TextField
-            name="description"
-            defaultValue={props.wish?.description}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
-
-        <FieldError name="description" className="rw-field-error" />
-
-        <Label
-          name="price"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Price
-        </Label>
-        
-          <TextField
-            name="price"
-            defaultValue={props.wish?.price}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
-
-        <FieldError name="price" className="rw-field-error" />
-
-        <Label
-          name="url"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Url
-        </Label>
-        
-          <TextField
-            name="url"
-            defaultValue={props.wish?.url}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
-
-        <FieldError name="url" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit

@@ -36,7 +36,13 @@ export const deleteUser: MutationResolvers['deleteUser'] = ({ id }) => {
 }
 
 export const User: UserRelationResolvers = {
-  wishlist: (_obj, { root }) => {
-    return db.user.findUnique({ where: { id: root?.id } }).wishlist()
+  exchanges: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).exchanges()
+  },
+  adminExchanges: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).adminExchanges()
+  },
+  wishes: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).wishes()
   },
 }

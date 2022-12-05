@@ -3,7 +3,7 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import {  } from 'src/lib/formatters'
+import { timeTag,  } from 'src/lib/formatters'
 
 import type { DeleteWishMutationVariables, FindWishById } from 'types/graphql'
 
@@ -50,20 +50,20 @@ const Wish = ({ wish }: Props) => {
               <th>Id</th>
               <td>{wish.id}</td>
             </tr><tr>
-              <th>User id</th>
-              <td>{wish.userId}</td>
+              <th>Created at</th>
+              <td>{timeTag(wish.createdAt)}</td>
             </tr><tr>
-              <th>Name</th>
-              <td>{wish.name}</td>
+              <th>Title</th>
+              <td>{wish.title}</td>
+            </tr><tr>
+              <th>Url</th>
+              <td>{wish.url}</td>
             </tr><tr>
               <th>Description</th>
               <td>{wish.description}</td>
             </tr><tr>
-              <th>Price</th>
-              <td>{wish.price}</td>
-            </tr><tr>
-              <th>Url</th>
-              <td>{wish.url}</td>
+              <th>User id</th>
+              <td>{wish.userId}</td>
             </tr>
           </tbody>
         </table>

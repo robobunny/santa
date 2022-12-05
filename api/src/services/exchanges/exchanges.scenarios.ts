@@ -8,8 +8,8 @@ export const standard = defineScenario<Prisma.ExchangeCreateArgs>({
         name: 'String',
         admin: {
           create: {
-            name: 'String119895',
-            email: 'String4593093',
+            name: 'String7193330',
+            email: 'String2303838',
             hashedPassword: 'String',
             salt: 'String',
           },
@@ -21,8 +21,8 @@ export const standard = defineScenario<Prisma.ExchangeCreateArgs>({
         name: 'String',
         admin: {
           create: {
-            name: 'String7527353',
-            email: 'String2655778',
+            name: 'String4203213',
+            email: 'String2061825',
             hashedPassword: 'String',
             salt: 'String',
           },

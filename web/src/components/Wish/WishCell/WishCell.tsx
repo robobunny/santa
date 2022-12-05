@@ -8,11 +8,11 @@ export const QUERY = gql`
   query FindWishById($id: Int!) {
     wish: wish(id: $id) {
       id
-      userId
-      name
-      description
-      price
+      createdAt
+      title
       url
+      description
+      userId
     }
   }
 `

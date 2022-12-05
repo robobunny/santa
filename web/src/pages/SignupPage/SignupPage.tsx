@@ -37,7 +37,6 @@ const SignupPage = () => {
       ...data,
       name,
     };
-    console.log(data)
     const response = await signUp({ ...data })
 
     if (response.message) {

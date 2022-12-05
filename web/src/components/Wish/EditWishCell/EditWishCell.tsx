@@ -11,11 +11,11 @@ export const QUERY = gql`
   query EditWishById($id: Int!) {
     wish: wish(id: $id) {
       id
-      userId
-      name
-      description
-      price
+      createdAt
+      title
       url
+      description
+      userId
     }
   }
 `
@@ -23,11 +23,11 @@ const UPDATE_WISH_MUTATION = gql`
   mutation UpdateWishMutation($id: Int!, $input: UpdateWishInput!) {
     updateWish(id: $id, input: $input) {
       id
-      userId
-      name
-      description
-      price
+      createdAt
+      title
       url
+      description
+      userId
     }
   }
 `

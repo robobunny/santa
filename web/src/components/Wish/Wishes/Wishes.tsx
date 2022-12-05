@@ -3,7 +3,7 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Wish/WishesCell'
-import { truncate } from 'src/lib/formatters'
+import { timeTag, truncate } from 'src/lib/formatters'
 
 import type { DeleteWishMutationVariables, FindWishes } from 'types/graphql'
 
@@ -42,11 +42,11 @@ const WishesList = ({ wishes }: FindWishes) => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>User id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
+            <th>Created at</th>
+            <th>Title</th>
             <th>Url</th>
+            <th>Description</th>
+            <th>User id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -54,11 +54,11 @@ const WishesList = ({ wishes }: FindWishes) => {
           {wishes.map((wish) => (
             <tr key={wish.id}>
               <td>{truncate(wish.id)}</td>
-              <td>{truncate(wish.userId)}</td>
-              <td>{truncate(wish.name)}</td>
-              <td>{truncate(wish.description)}</td>
-              <td>{truncate(wish.price)}</td>
+              <td>{timeTag(wish.createdAt)}</td>
+              <td>{truncate(wish.title)}</td>
               <td>{truncate(wish.url)}</td>
+              <td>{truncate(wish.description)}</td>
+              <td>{truncate(wish.userId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

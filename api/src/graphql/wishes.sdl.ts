@@ -1,38 +1,36 @@
 export const schema = gql`
   type Wish {
     id: Int!
-    user: User!
+    createdAt: DateTime!
+    title: String
+    url: String
+    description: String
     userId: Int!
-    name: String!
-    description: String!
-    price: String!
-    url: String!
+    user: User!
   }
 
   type Query {
-    wishes: [Wish!]! @skipAuth
-    wish(id: Int!): Wish @skipAuth
+    wishes: [Wish!]! @requireAuth
+    wish(id: Int!): Wish @requireAuth
   }
 
   input CreateWishInput {
+    title: String
+    url: String
+    description: String
     userId: Int!
-    name: String!
-    description: String!
-    price: String!
-    url: String!
   }
 
   input UpdateWishInput {
-    userId: Int
-    name: String
-    description: String
-    price: String
+    title: String
     url: String
+    description: String
+    userId: Int
   }
 
   type Mutation {
-    createWish(input: CreateWishInput!): Wish! @skipAuth
-    updateWish(id: Int!, input: UpdateWishInput!): Wish! @skipAuth
-    deleteWish(id: Int!): Wish! @skipAuth
+    createWish(input: CreateWishInput!): Wish! @requireAuth
+    updateWish(id: Int!, input: UpdateWishInput!): Wish! @requireAuth
+    deleteWish(id: Int!): Wish! @requireAuth
   }
 `

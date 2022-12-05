@@ -13,6 +13,12 @@ export const QUERY = gql`
       id
       name
       email
+      createdAt
+      hashedPassword
+      salt
+      resetToken
+      resetTokenExpiresAt
+      roles
     }
   }
 `
@@ -22,6 +28,12 @@ const UPDATE_USER_MUTATION = gql`
       id
       name
       email
+      createdAt
+      hashedPassword
+      salt
+      resetToken
+      resetTokenExpiresAt
+      roles
     }
   }
 `

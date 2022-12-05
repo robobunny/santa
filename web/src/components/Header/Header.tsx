@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div>
       <div className="flex-between">
-        <h1>Secret Santa</h1>
+        <a className="no-link" href='/'><h1>Secret Santa</h1></a>
         <LoginStatus/>
       </div>
       {hasRole(['mom', 'admin']) &&

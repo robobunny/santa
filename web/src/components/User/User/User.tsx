@@ -3,7 +3,7 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import {  } from 'src/lib/formatters'
+import { timeTag,  } from 'src/lib/formatters'
 
 import type { DeleteUserMutationVariables, FindUserById } from 'types/graphql'
 
@@ -55,6 +55,24 @@ const User = ({ user }: Props) => {
             </tr><tr>
               <th>Email</th>
               <td>{user.email}</td>
+            </tr><tr>
+              <th>Created at</th>
+              <td>{timeTag(user.createdAt)}</td>
+            </tr><tr>
+              <th>Hashed password</th>
+              <td>{user.hashedPassword}</td>
+            </tr><tr>
+              <th>Salt</th>
+              <td>{user.salt}</td>
+            </tr><tr>
+              <th>Reset token</th>
+              <td>{user.resetToken}</td>
+            </tr><tr>
+              <th>Reset token expires at</th>
+              <td>{timeTag(user.resetTokenExpiresAt)}</td>
+            </tr><tr>
+              <th>Roles</th>
+              <td>{user.roles}</td>
             </tr>
           </tbody>
         </table>

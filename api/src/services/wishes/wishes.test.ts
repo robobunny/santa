@@ -24,30 +24,20 @@ describe('wishes', () => {
 
   scenario('creates a wish', async (scenario: StandardScenario) => {
     const result = await createWish({
-      input: {
-        userId: scenario.wish.two.userId,
-        name: 'String',
-        description: 'String',
-        price: 'String',
-        url: 'String',
-      },
+      input: { userId: scenario.wish.two.userId },
     })
 
     expect(result.userId).toEqual(scenario.wish.two.userId)
-    expect(result.name).toEqual('String')
-    expect(result.description).toEqual('String')
-    expect(result.price).toEqual('String')
-    expect(result.url).toEqual('String')
   })
 
   scenario('updates a wish', async (scenario: StandardScenario) => {
     const original = (await wish({ id: scenario.wish.one.id })) as Wish
     const result = await updateWish({
       id: original.id,
-      input: { name: 'String2' },
+      input: { userId: scenario.wish.two.userId },
     })
 
-    expect(result.name).toEqual('String2')
+    expect(result.userId).toEqual(scenario.wish.two.userId)
   })
 
   scenario('deletes a wish', async (scenario: StandardScenario) => {

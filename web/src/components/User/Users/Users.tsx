@@ -3,7 +3,7 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/User/UsersCell'
-import { truncate } from 'src/lib/formatters'
+import { timeTag, truncate } from 'src/lib/formatters'
 
 import type { DeleteUserMutationVariables, FindUsers } from 'types/graphql'
 
@@ -44,6 +44,12 @@ const UsersList = ({ users }: FindUsers) => {
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Created at</th>
+            <th>Hashed password</th>
+            <th>Salt</th>
+            <th>Reset token</th>
+            <th>Reset token expires at</th>
+            <th>Roles</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -53,6 +59,12 @@ const UsersList = ({ users }: FindUsers) => {
               <td>{truncate(user.id)}</td>
               <td>{truncate(user.name)}</td>
               <td>{truncate(user.email)}</td>
+              <td>{timeTag(user.createdAt)}</td>
+              <td>{truncate(user.hashedPassword)}</td>
+              <td>{truncate(user.salt)}</td>
+              <td>{truncate(user.resetToken)}</td>
+              <td>{timeTag(user.resetTokenExpiresAt)}</td>
+              <td>{truncate(user.roles)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

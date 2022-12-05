@@ -110,7 +110,6 @@ export const handler = async (
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
     handler: ({ username, hashedPassword, salt, userAttributes }) => {
-      console.log('Creating user for', userAttributes.name)
       let role: String = 'basic';
       if (userAttributes.name==="Mom")
         role = 'admin';
@@ -120,7 +119,7 @@ export const handler = async (
           hashedPassword: hashedPassword,
           salt: salt,
           name: userAttributes.name,
-          role,
+          roles,
         },
       })
     },
