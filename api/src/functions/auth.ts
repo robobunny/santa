@@ -1,6 +1,6 @@
 import type { APIGatewayProxyEvent, Context } from 'aws-lambda'
 
-import { DbAuthHandler } from '@redwoodjs/api'
+import { DbAuthHandler, PasswordValidationError } from '@redwoodjs/api'
 import type { DbAuthHandlerOptions } from '@redwoodjs/api'
 
 import { db } from 'src/lib/db'
@@ -110,9 +110,11 @@ export const handler = async (
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
     handler: ({ username, hashedPassword, salt, userAttributes }) => {
-      let role: String = 'basic';
+      let roles: string = 'basic';
       if (userAttributes.name==="Mom")
-        role = 'admin';
+        roles = 'mom';
+      if (userAttributes.name==="Billy")
+        roles = "admin";
       return db.user.create({
         data: {
           email: username,
@@ -128,6 +130,8 @@ export const handler = async (
     // password is valid, otherwise throw a `PasswordValidationError`.
     // Import the error along with `DbAuthHandler` from `@redwoodjs/api` above.
     passwordValidation: (_password) => {
+      if (_password.length<16)
+        throw new PasswordValidationError('Password must be at least 16 characters');
       return true
     },
 
