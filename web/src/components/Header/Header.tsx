@@ -5,9 +5,11 @@ import LoginStatus from '../LoginStatus/LoginStatus'
 const Header = () => {
   let { hasRole } = useAuth();
   return (
-    <div>
-      <div className="flex-between">
-        <a className="no-link" href='/'><h1>Secret Santa</h1></a>
+    <div className="flex p-10 bg-slate-100 mx-auto">
+      <div className="flex-around">
+        <a className="no-link" href='/'>
+          <h1>Secret Santa</h1>
+        </a>
         <LoginStatus/>
       </div>
       {hasRole(['mom', 'admin']) &&

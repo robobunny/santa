@@ -8,6 +8,24 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+    .text {
+        @apply text-neutral-light;
+    }
+    .heading {
+        @apply font-extrabold;
+    }
+    body {
+        @apply bg-primary text;
+    }
+    h1 {
+        @apply heading text-3xl;
+    }
+    h2,h3,h4 {
+        @apply heading text-2xl;
+    }
+}
 /**
  * END --- SETUP TAILWINDCSS EDIT
  */
