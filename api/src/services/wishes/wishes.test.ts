@@ -22,24 +22,6 @@ describe('wishes', () => {
     expect(result).toEqual(scenario.wish.one)
   })
 
-  scenario('creates a wish', async (scenario: StandardScenario) => {
-    const result = await createWish({
-      input: { userId: scenario.wish.two.userId },
-    })
-
-    expect(result.userId).toEqual(scenario.wish.two.userId)
-  })
-
-  scenario('updates a wish', async (scenario: StandardScenario) => {
-    const original = (await wish({ id: scenario.wish.one.id })) as Wish
-    const result = await updateWish({
-      id: original.id,
-      input: { userId: scenario.wish.two.userId },
-    })
-
-    expect(result.userId).toEqual(scenario.wish.two.userId)
-  })
-
   scenario('deletes a wish', async (scenario: StandardScenario) => {
     const original = (await deleteWish({ id: scenario.wish.one.id })) as Wish
     const result = await wish({ id: original.id })

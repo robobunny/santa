@@ -31,8 +31,6 @@ const MyWishesPage = () => {
       <MetaTags title="MyWishes" description="MyWishes page" />
 
       <h1>My Wishes</h1>
-
-
     </>
   )
 }

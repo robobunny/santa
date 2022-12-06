@@ -21,18 +21,6 @@ model User {
   resetToken          String?
   resetTokenExpiresAt DateTime?
   roles               String    @default("basic")
-  exchanges           Exchange[]
-  adminExchanges      Exchange[] @relation("exchangeAdmin")
-  wishes              Wish[]
-}
-
-model Exchange {
-  id Int    @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  name String
-  admin User @relation("exchangeAdmin", fields: [adminId], references: [id])
-  adminId Int
-  users User[]
 }
 
 model Wish {
@@ -41,6 +29,4 @@ model Wish {
   title String?
   url String?
   description String?
-  userId Int
-  user User @relation(fields: [userId], references: [id])
 }

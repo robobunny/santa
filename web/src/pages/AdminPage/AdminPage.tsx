@@ -7,9 +7,6 @@ const AdminPage = () => {
       <MetaTags title="Admin" description="Admin page" />
       <h1>Admin Page</h1>
       <div className="links">
-        <p><Link to={routes.users()}>Users</Link></p>
-        <p><Link to={routes.wishes()}>Exchanges</Link></p>
-        <p><Link to={routes.wishes()}>Wishes</Link></p>
       </div>
     </>
   )

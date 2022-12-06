@@ -5,8 +5,6 @@ export const schema = gql`
     title: String
     url: String
     description: String
-    userId: Int!
-    user: User!
   }
 
   type Query {
@@ -18,14 +16,12 @@ export const schema = gql`
     title: String
     url: String
     description: String
-    userId: Int!
   }
 
   input UpdateWishInput {
     title: String
     url: String
     description: String
-    userId: Int
   }
 
   type Mutation {

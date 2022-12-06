@@ -9,9 +9,6 @@ export const schema = gql`
     resetToken: String
     resetTokenExpiresAt: DateTime
     roles: String!
-    exchanges: [Exchange]!
-    adminExchanges: [Exchange]!
-    wishes: [Wish]!
   }
 
   type Query {
