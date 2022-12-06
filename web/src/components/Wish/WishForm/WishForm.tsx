@@ -25,19 +25,6 @@ interface WishFormProps {
 
 const WishForm = (props: WishFormProps) => {
   const onSubmit = (data: FormWish) => {
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
     props.onSave(data, props?.wish?.id)
   }
 
@@ -50,7 +37,6 @@ const WishForm = (props: WishFormProps) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-      
         <Label
           name="title"
           className="rw-label"
@@ -58,15 +44,12 @@ const WishForm = (props: WishFormProps) => {
         >
           Title
         </Label>
-        
           <TextField
             name="title"
             defaultValue={props.wish?.title}
             className="rw-input"
             errorClassName="rw-input rw-input-error"
           />
-        
-
         <FieldError name="title" className="rw-field-error" />
 
         <Label
@@ -76,17 +59,13 @@ const WishForm = (props: WishFormProps) => {
         >
           Url
         </Label>
-        
           <TextField
             name="url"
             defaultValue={props.wish?.url}
             className="rw-input"
             errorClassName="rw-input rw-input-error"
           />
-        
-
         <FieldError name="url" className="rw-field-error" />
-
         <Label
           name="description"
           className="rw-label"
@@ -94,17 +73,13 @@ const WishForm = (props: WishFormProps) => {
         >
           Description
         </Label>
-        
           <TextField
             name="description"
             defaultValue={props.wish?.description}
             className="rw-input"
             errorClassName="rw-input rw-input-error"
           />
-        
-
         <FieldError name="description" className="rw-field-error" />
-
         <Label
           name="userId"
           className="rw-label"
@@ -112,7 +87,6 @@ const WishForm = (props: WishFormProps) => {
         >
           User id
         </Label>
-        
           <NumberField
             name="userId"
             defaultValue={props.wish?.userId}
@@ -120,10 +94,7 @@ const WishForm = (props: WishFormProps) => {
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-        
-
         <FieldError name="userId" className="rw-field-error" />
-
         <div className="rw-button-group">
           <Submit
             disabled={props.loading}

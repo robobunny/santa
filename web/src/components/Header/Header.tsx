@@ -1,19 +1,24 @@
 import {useAuth} from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
-import LoginStatus from '../LoginStatus/LoginStatus'
 
 const Header = () => {
-  let { hasRole } = useAuth();
+  let { currentUser, hasRole } = useAuth();
   return (
-    <div className="flex p-10 bg-slate-100 mx-auto">
-      <div className="flex-around">
-        <a className="no-link" href='/'>
-          <h1>Secret Santa</h1>
+    <div className="p-4 bg-primary-dark rounded-xl shadow-xl mx-auto mt-0 mb-8">
+      <div className="flex flex-row justify-between">
+        <a className="flex no-link" href='/'>
+          <h2 className="leading-none m-0 p-0 text-3xl">Secret Santa</h2>
         </a>
-        <LoginStatus/>
+        {hasRole(['mom', 'admin']) &&
+          <Link to={routes.admin()}>Admin Page</Link>
+        }
       </div>
-      {hasRole(['mom', 'admin']) &&
-        <Link to={routes.admin()}>Admin Page</Link>
+      {currentUser &&
+        <div className="mt-4"> 
+          <p>
+            Welcome, {currentUser.name}!
+          </p>
+        </div>
       }
     </div>
   )

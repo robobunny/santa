@@ -17,7 +17,7 @@
         @apply font-extrabold;
     }
     body {
-        @apply bg-primary text;
+        @apply p-5 bg-primary text;
     }
     h1 {
         @apply heading text-3xl;
